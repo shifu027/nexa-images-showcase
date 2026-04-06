@@ -22,12 +22,16 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Resolve basename from Vite's base config so React Router
+// works correctly when deployed under a subpath (e.g. GitHub Pages).
+const basename = import.meta.env.BASE_URL.replace(/\/+$/, "") || "/";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/loja" element={<Shop />} />

@@ -2,4 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /404
 
+# Update the sitemap URL to match your production domain.
+# If using GitHub Pages with custom domain, replace the URL below.
+# If using the default github.io domain, use: https://<user>.github.io/<repo>/sitemap.xml
 Sitemap: https://seu-dominio.com.br/sitemap.xml

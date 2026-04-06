@@ -1,49 +1,122 @@
-Nexa Images — Vitrine Criativa
-Site vitrine da marca Nexa Images, focado em stickers, etiquetas, papelaria e presentes com estética cozy, bookish, botanical e delicada. A compra é finalizada externamente na Zazzle.
-Stack
-React 18
-TypeScript
-Vite
-Tailwind CSS
-React Router
-Framer Motion
-shadcn/ui (estrutura já presente no projeto)
-Arquivos incluídos neste pacote
-Este pacote contém os arquivos principais para deixar o projeto mais pronto para publicar:
-SEO dinâmico via `useSeo`
-helper da Zazzle com fallback para a loja
-home mais refinada
-página de produto mais forte visualmente
-contato mais profissional
-cards mais premium
-`placeholder.svg` melhorado
-`favicon.svg`
-`robots.txt`, `sitemap.xml` e `site.webmanifest`
-`.env.example`
-Como usar
-Substitua estes arquivos no seu projeto atual mantendo a mesma estrutura de pastas.
-Variáveis de ambiente
-Crie um arquivo `.env` na raiz usando o `.env.example` como base.
-Exemplo
-```env
-VITE_SITE_URL=https://seu-dominio.com.br
-VITE_ZAZZLE_STORE_URL=https://www.zazzle.com.br/store/nexa_images
-```
-O que cada variável faz
-`VITE_SITE_URL`: usada para canonical e URLs absolutas de SEO.
-`VITE_ZAZZLE_STORE_URL`: usada como fallback quando um produto ainda não tiver `zazzleUrl` individual.
-Ajustes obrigatórios antes de publicar
-Substituir os `zazzleUrl` reais em `src/data/products.ts` sempre que possível.
-Trocar as imagens placeholder por mockups e imagens reais de produto.
-Ajustar e-mail e Instagram se desejar usar dados finais.
-Atualizar `VITE_SITE_URL` com seu domínio real.
-Revisar `public/sitemap.xml` com seu domínio real antes da publicação.
-Observação importante sobre a Zazzle
-O site foi estruturado como vitrine própria com finalização externa. Não há checkout interno. Quando não existir link individual válido do produto, o projeto pode usar a URL base da loja na Zazzle como fallback para evitar botões quebrados.
-Publicação
+# Nexa Images — Vitrine Criativa
+
+Site vitrine da marca **Nexa Images**, focado em stickers, etiquetas, papelaria e presentes com estética cozy, bookish, botanical e delicada. A compra é finalizada externamente na [Zazzle](https://www.zazzle.com.br/store/nexa_images).
+
+## Stack
+
+- React 18 + TypeScript
+- Vite 5
+- Tailwind CSS 3
+- React Router 6
+- Framer Motion
+- shadcn/ui
+
+## Rodando localmente
+
 ```bash
+# 1. Clone o repositório
+git clone https://github.com/<usuario>/nexa-images-showcase.git
+cd nexa-images-showcase
+
+# 2. Instale as dependências
 npm install
+
+# 3. Crie o arquivo de variáveis de ambiente
+cp .env.example .env
+# Edite .env conforme necessário (veja seção abaixo)
+
+# 4. Inicie o servidor de desenvolvimento
 npm run dev
-npm run build
+# Acesse http://localhost:8080
 ```
-Depois, publique normalmente na Vercel, Netlify ou outro host compatível com Vite.
+
+## Variáveis de ambiente
+
+| Variável | Descrição | Exemplo |
+|---|---|---|
+| `VITE_SITE_URL` | URL pública do site (usada para canonical, OG tags, sitemap) | `https://www.nexaimages.com.br` |
+| `VITE_ZAZZLE_STORE_URL` | URL base da loja na Zazzle (fallback para produtos sem link individual) | `https://www.zazzle.com.br/store/nexa_images` |
+| `VITE_BASE_PATH` | Base path do Vite para deploy em subdiretório | `/nexa-images-showcase/` |
+
+Crie um arquivo `.env` na raiz a partir do `.env.example`.
+
+## Deploy automático via GitHub Pages
+
+O repositório já possui um workflow em `.github/workflows/deploy.yml` que:
+
+1. Executa em cada push na branch `main`
+2. Instala dependências (`npm ci`)
+3. Gera o build de produção (`npm run build`)
+4. Copia `index.html` → `404.html` para fallback SPA
+5. Publica no GitHub Pages
+
+### Passo a passo para ativar
+
+1. **No GitHub**, vá em **Settings → Pages**
+2. Em **Source**, selecione **GitHub Actions**
+3. *(Opcional)* Vá em **Settings → Environments → github-pages → Environment variables** e configure:
+   - `VITE_SITE_URL` — URL do site publicado (ex.: `https://<usuario>.github.io/nexa-images-showcase`)
+   - `VITE_ZAZZLE_STORE_URL` — URL da loja Zazzle (padrão: `https://www.zazzle.com.br/store/nexa_images`)
+   - `VITE_BASE_PATH` — Necessário **apenas** se NÃO usar custom domain (ex.: `/nexa-images-showcase/`)
+4. Faça um push na `main` — o deploy é automático
+
+> **Nota:** Se usar **custom domain** (ex.: `www.nexaimages.com.br`), configure o domínio em **Settings → Pages → Custom domain** e deixe `VITE_BASE_PATH` como `/` (ou não defina).
+
+### Alterando o base path
+
+- **Sem custom domain** (GitHub Pages padrão `<user>.github.io/<repo>`): defina `VITE_BASE_PATH=/<repo>/` nas variáveis de ambiente do GitHub Actions.
+- **Com custom domain**: não defina `VITE_BASE_PATH` ou use `/`.
+
+### Alterando a URL da Zazzle
+
+1. Edite `VITE_ZAZZLE_STORE_URL` no `.env` (local) ou nas variáveis de ambiente do GitHub (CI).
+2. Para URLs individuais de produtos, edite `src/data/products.ts` — campo `zazzleUrl` de cada produto.
+3. Produtos sem `zazzleUrl` válido usam automaticamente a URL base da loja como fallback.
+
+## Estrutura do projeto
+
+```
+├── .github/workflows/deploy.yml   # CI/CD GitHub Pages
+├── public/                        # Arquivos estáticos (favicon, robots, sitemap, manifest)
+├── src/
+│   ├── components/                # Componentes React (layout, product, shared, ui)
+│   ├── data/                      # Dados estáticos (produtos, coleções, categorias)
+│   ├── hooks/                     # Hooks customizados (useSeo, etc.)
+│   ├── lib/                       # Utilitários (zazzle.ts, utils.ts)
+│   ├── pages/                     # Páginas da aplicação
+│   ├── App.tsx                    # Router principal
+│   └── main.tsx                   # Entry point
+├── .env.example                   # Template de variáveis de ambiente
+├── vite.config.ts                 # Configuração Vite com base path dinâmico
+└── index.html                     # HTML principal com SEO base
+```
+
+## SEO
+
+- **Dinâmico por página** via `useSeo` hook — cada página define title, description, canonical e OG tags.
+- **Canonical URL** baseada em `VITE_SITE_URL`.
+- **index.html** já inclui meta tags padrão, OG, Twitter Card.
+- **robots.txt** e **sitemap.xml** em `public/` — atualize o domínio antes de publicar.
+- **site.webmanifest** configurado para PWA básico.
+
+## Ajustes recomendados antes de publicar
+
+- [ ] Substituir `/placeholder.svg` por imagens reais de produto e coleção
+- [ ] Preencher `zazzleUrl` com os links reais em `src/data/products.ts`
+- [ ] Atualizar `VITE_SITE_URL` com o domínio final
+- [ ] Atualizar `public/sitemap.xml` e `public/robots.txt` com o domínio final
+- [ ] Revisar e-mail e Instagram nas páginas de contato/sobre
+
+## Observação sobre a Zazzle
+
+Este site funciona como **vitrine própria** com finalização de compra externa na [Zazzle](https://www.zazzle.com.br/store/nexa_images). Não há checkout interno. Quando não existir link individual do produto, o projeto usa a URL base da loja como fallback, evitando botões quebrados.
+
+## Scripts disponíveis
+
+| Comando | Descrição |
+|---|---|
+| `npm run dev` | Servidor de desenvolvimento (porta 8080) |
+| `npm run build` | Build de produção |
+| `npm run preview` | Preview do build local |
+| `npm run lint` | Lint com ESLint |
+| `npm run test` | Testes com Vitest |
