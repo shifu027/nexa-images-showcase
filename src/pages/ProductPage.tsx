@@ -8,8 +8,9 @@ import { getProductBySlug, getRelatedProducts } from "@/data/products";
 import { collections } from "@/data/collections";
 import { categories } from "@/data/categories";
 import { productFAQ } from "@/data/faq";
-import { ExternalLink, Paintbrush, Share2, Tag, Bookmark, CheckCircle2 } from "lucide-react";
+import { ExternalLink, Paintbrush, Share2, Tag, Bookmark, CheckCircle2, Clock } from "lucide-react";
 import { motion } from "framer-motion";
+import { resolveProductBuyUrl, resolveProductPersonalizeUrl } from "@/lib/zazzle";
 
 export default function ProductPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -17,7 +18,7 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <Layout>
+      <Layout title="Produto não encontrado" noindex>
         <div className="container py-20 text-center">
           <h1 className="font-display text-2xl font-semibold mb-4">Produto não encontrado</h1>
           <Link to="/loja" className="text-sm text-primary hover:underline">Voltar ao catálogo</Link>
@@ -29,6 +30,8 @@ export default function ProductPage() {
   const collection = collections.find(c => c.id === product.collection);
   const category = categories.find(c => c.id === product.category);
   const related = getRelatedProducts(product.relatedProducts);
+  const buyUrl = resolveProductBuyUrl(product);
+  const personalizeUrl = resolveProductPersonalizeUrl(product);
 
   const handleShare = () => {
     if (navigator.share) {
@@ -39,7 +42,10 @@ export default function ProductPage() {
   };
 
   return (
-    <Layout>
+    <Layout
+      title={product.seoTitle || product.name}
+      description={product.seoDescription || product.shortDescription}
+    >
       <div className="container">
         <Breadcrumbs items={[
           { label: "Catálogo", href: "/loja" },
@@ -119,18 +125,25 @@ export default function ProductPage() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 mb-6">
-              <a
-                href={product.zazzleUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity"
-              >
-                <ExternalLink className="w-4 h-4" />
-                Comprar na Zazzle
-              </a>
-              {product.customizable && product.personalizeUrl && (
+              {buyUrl ? (
                 <a
-                  href={product.personalizeUrl}
+                  href={buyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:opacity-90 transition-opacity"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Comprar na Zazzle
+                </a>
+              ) : (
+                <span className="flex-1 flex items-center justify-center gap-2 py-3 bg-muted text-muted-foreground font-medium rounded-lg cursor-default">
+                  <Clock className="w-4 h-4" />
+                  Link de compra em breve
+                </span>
+              )}
+              {personalizeUrl && (
+                <a
+                  href={personalizeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-2 py-3 border border-border font-medium rounded-lg hover:bg-muted transition-colors"
@@ -184,17 +197,14 @@ export default function ProductPage() {
           </motion.div>
         </div>
 
-        {/* Disclosure card */}
         <div className="mb-16">
           <ZazzleDisclosure variant="card" />
         </div>
 
-        {/* Product FAQ */}
         <div className="mb-16">
           <FAQSection items={productFAQ} title="Dúvidas sobre este produto" />
         </div>
 
-        {/* Related */}
         {related.length > 0 && (
           <div className="mb-16">
             <h2 className="font-display text-2xl font-semibold mb-8">Produtos Relacionados</h2>
