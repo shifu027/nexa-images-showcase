@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Static pages -->
-  <url><loc>/</loc></url>
-  <url><loc>/loja</loc></url>
-  <url><loc>/colecoes</loc></url>
-  <url><loc>/stickers</loc></url>
-  <url><loc>/labels</loc></url>
-  <url><loc>/presentes</loc></url>
-  <url><loc>/sobre</loc></url>
-  <url><loc>/contato</loc></url>
-  <url><loc>/faq</loc></url>
-  <url><loc>/termos</loc></url>
-  <url><loc>/privacidade</loc></url>
-  <url><loc>/como-funciona</loc></url>
+  <url><loc>https://seu-dominio.com.br/</loc></url>
+  <url><loc>https://seu-dominio.com.br/loja</loc></url>
+  <url><loc>https://seu-dominio.com.br/colecoes</loc></url>
+  <url><loc>https://seu-dominio.com.br/stickers</loc></url>
+  <url><loc>https://seu-dominio.com.br/labels</loc></url>
+  <url><loc>https://seu-dominio.com.br/presentes</loc></url>
+  <url><loc>https://seu-dominio.com.br/sobre</loc></url>
+  <url><loc>https://seu-dominio.com.br/contato</loc></url>
+  <url><loc>https://seu-dominio.com.br/faq</loc></url>
+  <url><loc>https://seu-dominio.com.br/termos</loc></url>
+  <url><loc>https://seu-dominio.com.br/privacidade</loc></url>
+  <url><loc>https://seu-dominio.com.br/como-funciona</loc></url>
 </urlset>
