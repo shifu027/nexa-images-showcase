@@ -1,0 +1,16 @@
+{
+  "name": "Nexa Images — Stickers, Etiquetas & Presentes",
+  "short_name": "Nexa Images",
+  "description": "Vitrine criativa com stickers, etiquetas, papelaria e presentes com estética delicada.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#7C8B6F",
+  "background_color": "#FAF8F5",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
