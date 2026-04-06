@@ -8,7 +8,7 @@ const stickers = getProductsByCategory("stickers");
 
 export default function StickersPage() {
   return (
-    <Layout>
+    <Layout title="Stickers" description="Figurinhas encantadoras para personalizar tudo — laptop, garrafa, planner e caderno. Vinil de alta qualidade com ilustrações exclusivas.">
       <div className="container">
         <Breadcrumbs items={[{ label: "Stickers" }]} />
         <div className="mb-10">

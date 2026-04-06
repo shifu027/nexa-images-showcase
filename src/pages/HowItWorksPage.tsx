@@ -13,7 +13,7 @@ const steps = [
 
 export default function HowItWorksPage() {
   return (
-    <Layout>
+    <Layout title="Como Funciona a Compra" description="Entenda como funciona a compra na Nexa Images: vitrine criativa com finalização segura na Zazzle.">
       <div className="container">
         <Breadcrumbs items={[{ label: "Como Funciona" }]} />
         <div className="max-w-3xl mx-auto py-8">

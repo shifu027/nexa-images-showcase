@@ -3,7 +3,7 @@ import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export default function Privacy() {
   return (
-    <Layout>
+    <Layout title="Política de Privacidade" description="Como a Nexa Images trata suas informações pessoais. Política de privacidade e uso de cookies.">
       <div className="container">
         <Breadcrumbs items={[{ label: "Política de Privacidade" }]} />
         <div className="max-w-3xl mx-auto py-8">

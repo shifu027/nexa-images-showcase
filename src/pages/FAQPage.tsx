@@ -5,7 +5,7 @@ import { generalFAQ } from "@/data/faq";
 
 export default function FAQPage() {
   return (
-    <Layout>
+    <Layout title="Perguntas Frequentes" description="Tudo o que você precisa saber sobre a Nexa Images, compras na Zazzle, personalização e entrega.">
       <div className="container">
         <Breadcrumbs items={[{ label: "FAQ" }]} />
         <div className="max-w-3xl mx-auto py-8">

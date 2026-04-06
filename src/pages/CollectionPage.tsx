@@ -12,7 +12,7 @@ export default function CollectionPage() {
 
   if (!collection) {
     return (
-      <Layout>
+      <Layout title="Coleção não encontrada" noindex>
         <div className="container py-20 text-center">
           <h1 className="font-display text-2xl font-semibold mb-4">Coleção não encontrada</h1>
           <Link to="/colecoes" className="text-sm text-primary hover:underline">Ver todas as coleções</Link>
@@ -24,7 +24,7 @@ export default function CollectionPage() {
   const collectionProducts = getProductsByCollection(collection.id);
 
   return (
-    <Layout>
+    <Layout title={collection.seoTitle || collection.name} description={collection.seoDescription || collection.description}>
       <div className="container">
         <Breadcrumbs items={[
           { label: "Coleções", href: "/colecoes" },

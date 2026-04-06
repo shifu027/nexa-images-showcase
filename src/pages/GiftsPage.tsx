@@ -8,7 +8,7 @@ const presentes = getProductsByCategory("presentes");
 
 export default function GiftsPage() {
   return (
-    <Layout>
+    <Layout title="Presentes" description="Canecas, ímãs, chaveiros e presentes personalizados com ilustrações exclusivas. Surpreenda quem você ama.">
       <div className="container">
         <Breadcrumbs items={[{ label: "Presentes" }]} />
         <div className="mb-10">

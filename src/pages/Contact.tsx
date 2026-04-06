@@ -4,7 +4,7 @@ import { Mail, MessageSquare } from "lucide-react";
 
 export default function Contact() {
   return (
-    <Layout>
+    <Layout title="Contato" description="Entre em contato com a Nexa Images. Adoramos ouvir de você!">
       <div className="container">
         <Breadcrumbs items={[{ label: "Contato" }]} />
         <div className="max-w-2xl mx-auto py-8">
