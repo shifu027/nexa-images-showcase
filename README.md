@@ -35,18 +35,25 @@ src/
 
 Cada produto em `src/data/products.ts` possui campos `zazzleUrl` e `personalizeUrl`. Substitua `"#"` pela URL real do produto na Zazzle. O sistema valida as URLs automaticamente e exibe "Link em breve" quando a URL ainda não foi configurada.
 
-Opcionalmente, defina `VITE_ZAZZLE_STORE_URL` no `.env` para gerar URLs de fallback baseadas no slug do produto.
+Se você quiser gerar URLs de fallback automaticamente, crie um arquivo `.env` na raiz (ou use o `.env.example` fornecido) e defina a variável `VITE_ZAZZLE_STORE_URL` com a URL base da sua loja na Zazzle. Por exemplo:
+
+```ini
+VITE_ZAZZLE_STORE_URL=https://www.zazzle.com.br/store/nexa_images
+```
+
+Quando definida, essa variável será usada para construir o link de compra (ex.: `https://www.zazzle.com.br/store/nexa_images/{slug}`) para produtos cujo campo `zazzleUrl` ainda esteja como `"#"`.
 
 ## SEO
 
 - SEO dinâmico via hook `useSeo` (título, descrição, OG, canonical, robots)
 - Cada página passa metadados para o `Layout`
 - `robots.txt` e `site.webmanifest` em `public/`
-- Sem sitemap.xml (domínio canônico não definido)
+- `sitemap.xml` com páginas estáticas (atualize com domínio canônico antes de publicar)
 
 ## Publicação
 
-1. Substitua os `zazzleUrl` e `personalizeUrl` por URLs reais
-2. Substitua as imagens placeholder por imagens reais dos produtos
-3. Configure o domínio e atualize os campos canonical/OG conforme necessário
-4. Execute `npm run build` e faça deploy do diretório `dist/`
+1. Substitua os campos `zazzleUrl` e `personalizeUrl` em `src/data/products.ts` pelas URLs reais dos produtos na Zazzle, ou configure `VITE_ZAZZLE_STORE_URL` para utilizar o fallback automático.
+2. Substitua as imagens placeholder por imagens reais dos produtos e coleções.
+3. Defina um domínio canônico para o seu site, atualize os campos `canonical` e metadados sociais conforme necessário em `index.html` e nas páginas.
+4. Se necessário, ajuste o arquivo `public/sitemap.xml` para refletir o domínio canônico e as rotas do seu projeto.
+5. Execute `npm run build` e faça o deploy do diretório `dist/`.
