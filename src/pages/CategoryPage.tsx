@@ -12,7 +12,7 @@ export default function CategoryPage() {
 
   if (!category) {
     return (
-      <Layout>
+      <Layout title="Categoria não encontrada" noindex>
         <div className="container py-20 text-center">
           <h1 className="font-display text-2xl font-semibold mb-4">Categoria não encontrada</h1>
           <Link to="/loja" className="text-sm text-primary hover:underline">Voltar ao catálogo</Link>
