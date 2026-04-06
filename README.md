@@ -1,59 +1,49 @@
-# Nexa Images — Vitrine Criativa
-
-Site de vitrine premium para a marca **Nexa Images**, focado em stickers, etiquetas, papelaria e presentes personalizados. A compra é finalizada na **Zazzle**.
-
-## Stack
-
-- **React 18** + **TypeScript 5** + **Vite 5**
-- **Tailwind CSS 3** com design tokens customizados
-- **Framer Motion** para animações
-- **React Router** para navegação SPA
-- **shadcn/ui** componentes base
-
-## Scripts
-
-```bash
-npm run dev       # servidor de desenvolvimento
-npm run build     # build de produção
-npm run preview   # preview do build
-npm run test      # testes com vitest
-npm run lint      # eslint
-```
-
-## Estrutura principal
-
-```
-src/
-├── components/       # Componentes reutilizáveis (layout, product, shared, ui)
-├── data/             # Catálogo de produtos, coleções, categorias, FAQ, depoimentos
-├── hooks/            # Hooks customizados (useSeo, useMobile)
-├── lib/              # Utilitários (zazzle.ts, utils.ts)
-├── pages/            # Páginas do site (16 rotas)
-```
-
-## Configuração de URLs Zazzle
-
-Cada produto em `src/data/products.ts` possui campos `zazzleUrl` e `personalizeUrl`. Substitua `"#"` pela URL real do produto na Zazzle. O sistema valida as URLs automaticamente e exibe "Link em breve" quando a URL ainda não foi configurada.
-
-Se você quiser gerar URLs de fallback automaticamente, crie um arquivo `.env` na raiz (ou use o `.env.example` fornecido) e defina a variável `VITE_ZAZZLE_STORE_URL` com a URL base da sua loja na Zazzle. Por exemplo:
-
-```ini
+Nexa Images — Vitrine Criativa
+Site vitrine da marca Nexa Images, focado em stickers, etiquetas, papelaria e presentes com estética cozy, bookish, botanical e delicada. A compra é finalizada externamente na Zazzle.
+Stack
+React 18
+TypeScript
+Vite
+Tailwind CSS
+React Router
+Framer Motion
+shadcn/ui (estrutura já presente no projeto)
+Arquivos incluídos neste pacote
+Este pacote contém os arquivos principais para deixar o projeto mais pronto para publicar:
+SEO dinâmico via `useSeo`
+helper da Zazzle com fallback para a loja
+home mais refinada
+página de produto mais forte visualmente
+contato mais profissional
+cards mais premium
+`placeholder.svg` melhorado
+`favicon.svg`
+`robots.txt`, `sitemap.xml` e `site.webmanifest`
+`.env.example`
+Como usar
+Substitua estes arquivos no seu projeto atual mantendo a mesma estrutura de pastas.
+Variáveis de ambiente
+Crie um arquivo `.env` na raiz usando o `.env.example` como base.
+Exemplo
+```env
+VITE_SITE_URL=https://seu-dominio.com.br
 VITE_ZAZZLE_STORE_URL=https://www.zazzle.com.br/store/nexa_images
 ```
-
-Quando definida, essa variável será usada para construir o link de compra (ex.: `https://www.zazzle.com.br/store/nexa_images/{slug}`) para produtos cujo campo `zazzleUrl` ainda esteja como `"#"`.
-
-## SEO
-
-- SEO dinâmico via hook `useSeo` (título, descrição, OG, canonical, robots)
-- Cada página passa metadados para o `Layout`
-- `robots.txt` e `site.webmanifest` em `public/`
-- `sitemap.xml` com páginas estáticas (atualize com domínio canônico antes de publicar)
-
-## Publicação
-
-1. Substitua os campos `zazzleUrl` e `personalizeUrl` em `src/data/products.ts` pelas URLs reais dos produtos na Zazzle, ou configure `VITE_ZAZZLE_STORE_URL` para utilizar o fallback automático.
-2. Substitua as imagens placeholder por imagens reais dos produtos e coleções.
-3. Defina um domínio canônico para o seu site, atualize os campos `canonical` e metadados sociais conforme necessário em `index.html` e nas páginas.
-4. Se necessário, ajuste o arquivo `public/sitemap.xml` para refletir o domínio canônico e as rotas do seu projeto.
-5. Execute `npm run build` e faça o deploy do diretório `dist/`.
+O que cada variável faz
+`VITE_SITE_URL`: usada para canonical e URLs absolutas de SEO.
+`VITE_ZAZZLE_STORE_URL`: usada como fallback quando um produto ainda não tiver `zazzleUrl` individual.
+Ajustes obrigatórios antes de publicar
+Substituir os `zazzleUrl` reais em `src/data/products.ts` sempre que possível.
+Trocar as imagens placeholder por mockups e imagens reais de produto.
+Ajustar e-mail e Instagram se desejar usar dados finais.
+Atualizar `VITE_SITE_URL` com seu domínio real.
+Revisar `public/sitemap.xml` com seu domínio real antes da publicação.
+Observação importante sobre a Zazzle
+O site foi estruturado como vitrine própria com finalização externa. Não há checkout interno. Quando não existir link individual válido do produto, o projeto pode usar a URL base da loja na Zazzle como fallback para evitar botões quebrados.
+Publicação
+```bash
+npm install
+npm run dev
+npm run build
+```
+Depois, publique normalmente na Vercel, Netlify ou outro host compatível com Vite.
