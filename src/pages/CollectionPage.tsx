@@ -24,7 +24,7 @@ export default function CollectionPage() {
   const collectionProducts = getProductsByCollection(collection.id);
 
   return (
-    <Layout>
+    <Layout title={collection.seoTitle || collection.name} description={collection.seoDescription || collection.description}>
       <div className="container">
         <Breadcrumbs items={[
           { label: "Coleções", href: "/colecoes" },

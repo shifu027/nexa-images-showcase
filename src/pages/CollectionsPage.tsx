@@ -5,7 +5,7 @@ import { collections } from "@/data/collections";
 
 export default function CollectionsPage() {
   return (
-    <Layout>
+    <Layout title="Coleções" description="Explore as coleções criativas da Nexa Images. Mundos com estéticas únicas: capivaras, botânicos, bookish e muito mais.">
       <div className="container">
         <Breadcrumbs items={[{ label: "Coleções" }]} />
         <div className="mb-10">

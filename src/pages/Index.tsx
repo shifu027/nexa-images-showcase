@@ -32,7 +32,7 @@ const benefits = [
 
 export default function Index() {
   return (
-    <Layout>
+    <Layout title="Stickers, Etiquetas & Presentes com Alma" description="Ilustrações exclusivas em stickers, etiquetas e papelaria criativa. Estética cozy, bookish e botanical. Compre na Zazzle.">
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-sage-light via-background to-rose-light opacity-60" />

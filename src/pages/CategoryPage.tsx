@@ -24,7 +24,7 @@ export default function CategoryPage() {
   const categoryProducts = getProductsByCategory(category.id);
 
   return (
-    <Layout>
+    <Layout title={category.name} description={`${category.name} — ${category.description}`}>
       <div className="container">
         <Breadcrumbs items={[
           { label: "Catálogo", href: "/loja" },

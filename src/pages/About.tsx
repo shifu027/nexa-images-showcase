@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function About() {
   return (
-    <Layout>
+    <Layout title="Sobre a Marca" description="Conheça a Nexa Images: uma marca criativa dedicada a stickers, etiquetas e papelaria com ilustrações delicadas e acolhedoras.">
       <div className="container">
         <Breadcrumbs items={[{ label: "Sobre a Marca" }]} />
         <div className="max-w-3xl mx-auto py-8">

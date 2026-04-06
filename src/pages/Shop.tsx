@@ -53,7 +53,7 @@ export default function Shop() {
   const hasActiveFilters = query || selectedCategory || selectedCollection || initialFilter;
 
   return (
-    <Layout>
+    <Layout title="Catálogo" description="Explore todos os stickers, etiquetas e presentes da Nexa Images. Filtre por categoria, coleção e encontre o produto perfeito.">
       <div className="container">
         <Breadcrumbs items={[{ label: "Catálogo" }]} />
 

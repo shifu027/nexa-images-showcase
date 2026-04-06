@@ -8,7 +8,7 @@ const labels = getProductsByCategory("labels");
 
 export default function LabelsPage() {
   return (
-    <Layout>
+    <Layout title="Labels & Etiquetas" description="Etiquetas delicadas para presentes, organização, escola, casamentos e pequenos negócios. Cada detalhe pensado com carinho.">
       <div className="container">
         <Breadcrumbs items={[{ label: "Labels & Etiquetas" }]} />
         <div className="mb-10">

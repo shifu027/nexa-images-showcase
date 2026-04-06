@@ -3,7 +3,7 @@ import Breadcrumbs from "@/components/layout/Breadcrumbs";
 
 export default function Terms() {
   return (
-    <Layout>
+    <Layout title="Termos de Uso" description="Termos de uso do site Nexa Images. Informações sobre compras via Zazzle e propriedade intelectual.">
       <div className="container">
         <Breadcrumbs items={[{ label: "Termos de Uso" }]} />
         <div className="max-w-3xl mx-auto py-8 prose-sm">
