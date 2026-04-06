@@ -34,7 +34,7 @@
     --input: 35 18% 88%;
     --ring: 145 18% 42%;
 
-    --radius: 0.75rem;
+    --radius: 0.9rem;
 
     --sage: 145 18% 42%;
     --sage-light: 145 20% 92%;
@@ -64,12 +64,35 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground font-body antialiased;
+  html {
+    scroll-behavior: smooth;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image:
+      radial-gradient(circle at top, rgba(203, 224, 214, 0.18), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(244, 220, 226, 0.16), transparent 28%);
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display;
+  }
+
+  ::selection {
+    background: hsl(var(--sage-light));
+  }
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-[1.5rem] border border-border/70 bg-card shadow-[0_18px_40px_-28px_rgba(0,0,0,0.28)];
   }
 }
 
