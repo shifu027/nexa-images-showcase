@@ -35,7 +35,7 @@ export default function Index() {
     <Layout title="Stickers, Etiquetas & Presentes com Alma" description="Ilustrações exclusivas em stickers, etiquetas e papelaria criativa. Estética cozy, bookish e botanical. Compre na Zazzle.">
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-sage-light via-background to-rose-light opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sage-light via-background to-rose-light opacity-70" />
         <div className="container relative py-20 md:py-32">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

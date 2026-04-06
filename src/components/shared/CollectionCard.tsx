@@ -18,7 +18,7 @@ export default function CollectionCard({ collection, index = 0 }: CollectionCard
     >
       <Link
         to={`/colecao/${collection.slug}`}
-        className="group block rounded-xl overflow-hidden bg-muted"
+        className="group block rounded-xl overflow-hidden bg-muted border border-border shadow-sm hover:shadow-md transition-shadow"
       >
         <div className="relative aspect-[4/3]">
           <img

@@ -26,7 +26,7 @@ export default function CategoryCard({ category, index = 0 }: CategoryCardProps)
     >
       <Link
         to={`/categoria/${category.slug}`}
-        className="group flex flex-col items-center text-center p-6 rounded-xl bg-card border border-border hover:border-primary/30 hover:shadow-sm transition-all"
+        className="group flex flex-col items-center text-center p-6 rounded-xl bg-card border border-border shadow-sm hover:shadow-md hover:border-primary/50 transition-all"
       >
         <div className="w-12 h-12 rounded-full bg-sage-light flex items-center justify-center mb-3 group-hover:bg-primary/10 transition-colors">
           <Icon className="w-5 h-5 text-primary" />
