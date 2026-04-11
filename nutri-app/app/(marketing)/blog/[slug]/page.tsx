@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -100,6 +101,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+/** Renders **bold** markdown syntax as React <strong> elements without dangerouslySetInnerHTML. */
+function renderBold(text: string): React.ReactNode {
+  const parts = text.split(/\*\*(.*?)\*\*/g);
+  return parts.map((part, i) =>
+    i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+  );
+}
+
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = posts[slug];
@@ -153,15 +162,13 @@ export default async function BlogPostPage({ params }: PageProps) {
               return (
                 <ul key={i} className="list-disc list-inside space-y-1 my-4">
                   {items.map((item, j) => (
-                    <li key={j} className="text-gray-700" dangerouslySetInnerHTML={{ __html: item.replace("- ", "").replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") }} />
+                    <li key={j} className="text-gray-700">{renderBold(item.replace(/^- /, ""))}</li>
                   ))}
                 </ul>
               );
             }
             return (
-              <p key={i} className="text-gray-700 leading-relaxed my-4"
-                dangerouslySetInnerHTML={{ __html: paragraph.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") }}
-              />
+              <p key={i} className="text-gray-700 leading-relaxed my-4">{renderBold(paragraph)}</p>
             );
           })}
         </div>

@@ -80,7 +80,8 @@ export function getInitials(name: string): string {
   return name
     .split(" ")
     .filter((n) => n.length > 0)
-    .map((n) => n[0]!)
+    // Each segment is guaranteed to have at least one character after the filter above
+    .map((n) => n[0] as string)
     .slice(0, 2)
     .join("")
     .toUpperCase();

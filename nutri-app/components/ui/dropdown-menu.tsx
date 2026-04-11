@@ -62,8 +62,9 @@ function DropdownMenuItem({
   );
 
   if (asChild && isValidElement(children)) {
-    return cloneElement(children as React.ReactElement<React.HTMLAttributes<HTMLElement>>, {
-      className: cn(classes, (children as React.ReactElement<{ className?: string }>).props.className),
+    const child = children as React.ReactElement<{ className?: string }>;
+    return cloneElement(child, {
+      className: cn(classes, child.props.className),
     });
   }
 
