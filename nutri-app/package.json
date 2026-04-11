@@ -13,7 +13,7 @@
     "db:studio": "prisma studio"
   },
   "dependencies": {
-    "next": "15.1.0",
+    "next": "15.5.15",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "next-auth": "^5.0.0-beta.25",
@@ -39,6 +39,6 @@
     "postcss": "^8.4.49",
     "prisma": "^5.20.0",
     "eslint": "^9.0.0",
-    "eslint-config-next": "15.1.0"
+    "eslint-config-next": "15.5.15"
   }
 }
