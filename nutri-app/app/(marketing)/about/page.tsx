@@ -162,7 +162,12 @@ export default function AboutPage() {
               >
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-100 mx-auto mb-4">
                   <span className="text-xl font-bold text-primary-600">
-                    {member.name.split(" ").filter(w => !["Dr.", "Dra."].includes(w)).map(w => w[0]).slice(0, 2).join("")}
+                    {member.name
+                      .split(" ")
+                      .filter((w) => w.length > 0 && !["Dr.", "Dra."].includes(w))
+                      .map((w) => w[0]!)
+                      .slice(0, 2)
+                      .join("")}
                   </span>
                 </div>
                 <h3 className="font-semibold text-gray-900">{member.name}</h3>
